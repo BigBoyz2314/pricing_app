@@ -1,0 +1,35 @@
+{
+  "doctype": "DocType",
+  "name": "Pricing Item",
+  "module": "Pricing Calculator",
+  "custom": 0,
+  "is_submittable": 0,
+  "editable_grid": 0,
+  "track_changes": 1,
+  "fields": [
+    {"fieldname": "item_name", "fieldtype": "Data", "label": "Item Name", "reqd": 1},
+    {"fieldname": "base_price", "fieldtype": "Currency", "label": "Base Price"},
+    {
+      "fieldname": "unit",
+      "fieldtype": "Select",
+      "label": "Unit",
+      "options": "sqft\nsqm\nunit",
+      "reqd": 1,
+      "default": "sqft"
+    },
+    {"fieldname": "description", "fieldtype": "Small Text", "label": "Description"},
+    {"fieldname": "active", "fieldtype": "Check", "label": "Active", "default": "1"}
+  ],
+  "permissions": [
+    {
+      "role": "System Manager",
+      "create": 1,
+      "read": 1,
+      "write": 1,
+      "delete": 1
+    },
+    {"role": "All", "read": 1}
+  ]
+}
+
+

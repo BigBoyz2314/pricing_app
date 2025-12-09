@@ -1,0 +1,35 @@
+{
+  "doctype": "DocType",
+  "name": "Pricing Formula",
+  "module": "Pricing Calculator",
+  "custom": 0,
+  "track_changes": 1,
+  "fields": [
+    {"fieldname": "item", "fieldtype": "Link", "label": "Item", "options": "Pricing Item", "reqd": 1},
+    {"fieldname": "min_width", "fieldtype": "Float", "label": "Min Width", "reqd": 1},
+    {"fieldname": "max_width", "fieldtype": "Float", "label": "Max Width", "reqd": 1},
+    {"fieldname": "min_height", "fieldtype": "Float", "label": "Min Height", "reqd": 1},
+    {"fieldname": "max_height", "fieldtype": "Float", "label": "Max Height", "reqd": 1},
+    {"fieldname": "price_per_sqft", "fieldtype": "Currency", "label": "Price per Sqft", "reqd": 1},
+    {"fieldname": "fixed_cost", "fieldtype": "Currency", "label": "Fixed Cost", "default": 0},
+    {
+      "fieldname": "formula_code",
+      "fieldtype": "Code",
+      "label": "Formula Code",
+      "options": "Python",
+      "description": "Optional custom pricing code. Set variable `total` or `breakdown_lines`."
+    }
+  ],
+  "permissions": [
+    {
+      "role": "System Manager",
+      "create": 1,
+      "read": 1,
+      "write": 1,
+      "delete": 1
+    },
+    {"role": "All", "read": 1}
+  ]
+}
+
+

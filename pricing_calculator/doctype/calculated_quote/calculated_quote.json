@@ -1,0 +1,27 @@
+{
+  "doctype": "DocType",
+  "name": "Calculated Quote",
+  "module": "Pricing Calculator",
+  "custom": 0,
+  "track_changes": 1,
+  "is_submittable": 0,
+  "fields": [
+    {"fieldname": "selected_item", "fieldtype": "Link", "label": "Item", "options": "Pricing Item", "reqd": 1},
+    {"fieldname": "width", "fieldtype": "Float", "label": "Width", "reqd": 1},
+    {"fieldname": "height", "fieldtype": "Float", "label": "Height", "reqd": 1},
+    {"fieldname": "calculated_price", "fieldtype": "Currency", "label": "Calculated Price", "read_only": 1},
+    {"fieldname": "breakdown", "fieldtype": "Long Text", "label": "Breakdown", "read_only": 1}
+  ],
+  "permissions": [
+    {
+      "role": "System Manager",
+      "create": 1,
+      "read": 1,
+      "write": 1,
+      "delete": 1
+    },
+    {"role": "All", "read": 1, "write": 1, "create": 1}
+  ]
+}
+
+

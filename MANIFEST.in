@@ -1,0 +1,7 @@
+recursive-include pricing_calculator *.py *.json *.md *.js *.css *.html
+recursive-include pricing_calculator/public *
+recursive-include pricing_calculator/config *
+recursive-include pricing_calculator/templates *
+prune pricing_calculator/node_modules
+
+

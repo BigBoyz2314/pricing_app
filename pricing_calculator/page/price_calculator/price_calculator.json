@@ -1,0 +1,10 @@
+{
+  "doctype": "Page",
+  "name": "price_calculator",
+  "module": "Pricing Calculator",
+  "title": "Price Calculator",
+  "icon": "octicon octicon-calculator",
+  "single_page": 1
+}
+
+
