@@ -1,0 +1,3 @@
+# This file keeps track of database patches for the pricing_calculator app.
+# Add patch module paths here, one per line, in the order they should run.
+
