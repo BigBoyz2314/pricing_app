@@ -118,9 +118,61 @@ def ensure_defaults():
         module.app_name = "pricing_calculator"
         module.save(ignore_permissions=True)
 
+    _ensure_price_calculator_page()
+    _ensure_price_calculator_workspace()
+
 
 def _assert_positive(value, label: str):
     if value is None or value <= 0:
         frappe.throw(f"{label} must be greater than zero.")
+
+
+def _ensure_price_calculator_page():
+    """Create a custom Page so desk users can open /app/price-calculator without Developer Mode."""
+    if frappe.db.exists("Page", "price_calculator"):
+        return
+
+    page = frappe.new_doc("Page")
+    page.page_name = "price_calculator"
+    page.title = "Price Calculator"
+    page.module = "Pricing Calculator"
+    page.route = "price-calculator"
+    page.standard = 0  # must be non-standard to avoid developer mode
+    page.custom = 1
+    page.single_page = 1
+    # Limit to System Manager by default; admins can broaden via the UI
+    page.append("roles", {"role": "System Manager"})
+    page.insert(ignore_permissions=True)
+    frappe.db.commit()
+
+
+def _ensure_price_calculator_workspace():
+    """Create a custom Workspace with a shortcut to the page."""
+    if frappe.db.exists("Workspace", "Pricing Calculator"):
+        return
+
+    ws = frappe.new_doc("Workspace")
+    ws.name = "Pricing Calculator"
+    ws.label = "Pricing Calculator"
+    ws.title = "Pricing Calculator"
+    ws.module = "Pricing Calculator"
+    ws.icon = "octicon octicon-calculator"
+    ws.public = 1
+    ws.sequence_id = 1
+    ws.extendable = 0
+    ws.is_hidden = 0
+    ws.for_user = ""
+    ws.extend = ""
+    ws.content = ""
+    ws.append(
+        "shortcuts",
+        {
+            "type": "Page",
+            "label": "Price Calculator",
+            "link_to": "price_calculator",
+        },
+    )
+    ws.insert(ignore_permissions=True)
+    frappe.db.commit()
 
 
