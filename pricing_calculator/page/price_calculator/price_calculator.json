@@ -4,7 +4,8 @@
   "module": "Pricing Calculator",
   "title": "Price Calculator",
   "icon": "octicon octicon-calculator",
-  "single_page": 1
+  "single_page": 1,
+  "route": "price-calculator"
 }
 
 
